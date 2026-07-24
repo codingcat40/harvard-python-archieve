@@ -4,19 +4,28 @@ class Student:
     def __init__(self, name, house):
         if not name:
             raise ValueError("Missing name")
-        if house not in ["Auroville", "Chennai", "Pondicherry", "Bangalore", "Kochi"]:
-            raise ValueError("Invalid house")
+        
         self.name = name
         self.house = house
         
         
     def __str__(self):
         return f"{self.name} from {self.house}"
-        
+    
+    # getter
+    @property      
+    def house(self):
+        return self._house
+    
+    # setter
+    @house.setter
+    def house(self, house):
+        if house not in ["Auroville", "Chennai", "Pondi", "Bangalore"]:
+            raise ValueError("Invalid house")
+        self._house = house 
 
 def main():
     student = get_student()
-    student.house = "Auroville, Tamilnadu"
     print(student)
 
 def get_student():
